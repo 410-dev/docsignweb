@@ -1,5 +1,6 @@
 package me.hysong.dev.site.servlets.docsign;
 
+import me.hysong.dev.site.modules.docsign.CentralPathManager;
 import me.hysong.libhycore.CoreSHA;
 import me.hysong.libhyextended.utils.StackTraceStringifier;
 import me.hysong.dev.site.modules.Logger;
@@ -42,7 +43,7 @@ public class DocSignVerifySignature extends HttpServlet {
             InputStream inputStream = filePart.getInputStream();
 
             // Specify the path to save the uploaded file
-            String uploadPath = "/opt/data/docsign/" + fileName;
+            String uploadPath = CentralPathManager.getCentralStoragePath() + fileName;
 
             // Create a file output stream to write the uploaded file to disk
             FileOutputStream outputStream = new FileOutputStream(uploadPath);

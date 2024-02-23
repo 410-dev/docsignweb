@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import me.hysong.libhycore.CoreDate;
 import me.hysong.libhyextended.utils.StackTraceStringifier;
-import me.hysong.dev.site.struct.database.table.LogTableStruct;
 
 import java.sql.SQLException;
 
@@ -47,11 +46,11 @@ public class Logger {
 
     private static void recordToDB(HttpServletRequest request, String logType, String time, long unixTime, String message) {
         System.out.println(message);
-        try {
-            SQLiteFactory.getLogDatabase().executeUpdate("INSERT INTO " + LogTableStruct.TABLE_NAME +" (" + LogTableStruct.COLUMN_UNIX_TIME + ", " + LogTableStruct.COLUMN_TIMESTAMP + ", " + LogTableStruct.COLUMN_TYPE + ", " + LogTableStruct.COLUMN_ADDRESS + ", " + LogTableStruct.COLUMN_REQUEST + ", " + LogTableStruct.COLUMN_MESSAGE + ") VALUES (?, ?, ?, ?, ?, ?)", unixTime, time, logType, request.getRemoteAddr(), request.getRequestURL().toString(), message);
-        } catch (SQLException e) {
-            error(message, e);
-        }
+//        try {
+//            SQLiteFactory.getLogDatabase().executeUpdate("INSERT INTO " + LogTableStruct.TABLE_NAME +" (" + LogTableStruct.COLUMN_UNIX_TIME + ", " + LogTableStruct.COLUMN_TIMESTAMP + ", " + LogTableStruct.COLUMN_TYPE + ", " + LogTableStruct.COLUMN_ADDRESS + ", " + LogTableStruct.COLUMN_REQUEST + ", " + LogTableStruct.COLUMN_MESSAGE + ") VALUES (?, ?, ?, ?, ?, ?)", unixTime, time, logType, request.getRemoteAddr(), request.getRequestURL().toString(), message);
+//        } catch (SQLException e) {
+//            error(message, e);
+//        }
     }
 
     private static void error(String message, Exception e) {

@@ -11,7 +11,7 @@ import java.io.FileWriter;
 public class FileDeletionQueue {
 
     private static Thread workerThread;
-    private static final String databasePath = "/opt/data/docsign/docsign-deletion-queue.txt";
+    private static final String databasePath = CentralPathManager.getCentralStoragePath() + "/docsign-deletion-queue.txt";
 
     private static void generateIfNotExists() {
         File file = new File(databasePath);
